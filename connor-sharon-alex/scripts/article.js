@@ -17,7 +17,7 @@ function Article (rawDataObj) {
 }
 
 Article.prototype.toHtml = function() {
-  // TODO: Use Handlebars to render your articles. Get your template from the DOM and "compile" your template with Handlebars.
+  // DONE: Use Handlebars to render your articles. Get your template from the DOM and "compile" your template with Handlebars.
   let template = $('#blog-template').html();
   let templateRender = Handlebars.compile(template);
 
@@ -37,12 +37,14 @@ Article.prototype.toHtml = function() {
   //   this.publishStatus = '(draft)';
   // }
 
-  // TODO: Use the method that Handlebars gave you to return your filled-in html template for THIS article.
+  // DONE: Use the method that Handlebars gave you to return your filled-in html template for THIS article.
 
+  return  templateRender(this);
 };
 
 // COMMENT: Why are there parentheses around "(a,b)" in the .sort() method, but not around the "articleObject" or "article" arguments in the .forEach() methods?
-// PUT YOUR RESPONSE HERE
+// There are parantheses around the parameters because there are multiple parameters in the arrow function.  Whereas in the forEach we are only referencing a single parameter and do not need the paratheticals.
+
 rawData.sort((a,b) => {
   return (new Date(b.publishedOn)) - (new Date(a.publishedOn));
 });

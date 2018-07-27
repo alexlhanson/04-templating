@@ -22,12 +22,12 @@
   <script id="blog-template" type="text/x-handlebars-template">
   
   <!-- template goes here -->
-  <article class="blog-entry" data-category="cat">
+<article class="blog-entry" data-category= "{{ category }}" data-author="{{ author }}"> 
     <header>
       <h1>{{ title }}</h1>
       <div>
-        By <address><a href={{ authorUrl }}>{{ author }}</a></address>
-        <time pubdate datetime={{ publishedOn }}>{{ publishStatus }}</time>
+        By <address><a href="{{ authorUrl }}">{{ author }}</a></address>
+        <time pubdate datetime="{{ publishedOn }}">{{ publishStatus }}</time>
       </div>
     </header>
     <section class="article-body">{{{ body }}}</section>

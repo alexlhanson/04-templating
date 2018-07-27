@@ -8,52 +8,50 @@ let articleView = {};
 // Arrow functions inherits the context of the 'this' in which it is being called.  A new function call reassigns the 'this' context. Also, in prototype methods it is better to use function so you do not lose contextual this. 
 
 articleView.populateFilters = () => {
-  $('article').each(function() {
+  $('article').each(function () {
     if (!$(this).hasClass('template')) {
-      let val = $(this).find('address a').text();
-      let optionTag = `<option value="${val}">${val}</option>`;
 
-      if ($(`#author-filter option[value="${val}"]`).length === 0) {
-        $('#author-filter').append(optionTag);
-      }
+      for (let key in $(this).data()) {
+        let val = $(this).attr(`data-${key}`);
+        let optionTag = `<option value="${val}">${val}</option>`;
 
-      val = $(this).attr('data-category');
-      optionTag = `<option value="${val}">${val}</option>`;
-      if ($(`#category-filter option[value="${val}"]`).length === 0) {
-        $('#category-filter').append(optionTag);
+        if ($(`${key} option[value="${val}"]`).length === 0) {
+          $(`#${key}`).append(optionTag);
+        }
       }
     }
   });
 };
 
-articleView.handleAuthorFilter = () => {
-  $('#author-filter').on('change', function() {
-    if ($(this).val()) {
-      $('article').hide();
-      $(`article[data-author="${$(this).val()}"]`).fadeIn();
-    } else {
-      $('article').fadeIn();
-      $('article.template').hide();
-    }
-    $('#category-filter').val('');
-  });
-};
 
-articleView.handleCategoryFilter = () => {
-  $('#category-filter').on('change', function() {
-    if ($(this).val()) {
-      $('article').hide();
-      $(`article[data-category="${$(this).val()}"]`).fadeIn();
-    } else {
-      $('article').fadeIn();
-      $('article.template').hide();
-    }
-    $('#author-filter').val('');
-  });
-};
+// articleView.handleAuthorFilter = () => {
+//   $('#author-filter').on('change', function() {
+//     if ($(this).val()) {
+//       $('article').hide();
+//       $(`article[data-author="${$(this).val()}"]`).fadeIn();
+//     } else {
+//       $('article').fadeIn();
+//       $('article.template').hide();
+//     }
+//     $('#category-filter').val('');
+//   });
+// };
+
+// articleView.handleCategoryFilter = () => {
+//   $('#category-filter').on('change', function() {
+//     if ($(this).val()) {
+//       $('article').hide();
+//       $(`article[data-category="${$(this).val()}"]`).fadeIn();
+//     } else {
+//       $('article').fadeIn();
+//       $('article.template').hide();
+//     }
+//     $('#author-filter').val('');
+//   });
+// };
 
 articleView.handleMainNav = () => {
-  $('nav').on('click', '.tab', function(e) {
+  $('nav').on('click', '.tab', function (e) {
     e.preventDefault();
     $('.tab-content').hide();
     $(`#${$(this).data('content')}`).fadeIn();
@@ -64,7 +62,7 @@ articleView.handleMainNav = () => {
 
 articleView.setTeasers = () => {
   $('.article-body *:nth-of-type(n+2)').hide();
-  $('article').on('click', 'a.read-on', function(e) {
+  $('article').on('click', 'a.read-on', function (e) {
     e.preventDefault();
     if ($(this).text() === 'Read on →') {
       $(this).parent().find('*').fadeIn();
@@ -72,7 +70,7 @@ articleView.setTeasers = () => {
     } else {
       $('body').animate({
         scrollTop: ($(this).parent().offset().top)
-      },200);
+      }, 200);
       $(this).html('Read on &rarr;');
       $(this).parent().find('.article-body *:nth-of-type(n+2)').hide();
     }
@@ -81,8 +79,8 @@ articleView.setTeasers = () => {
 
 $(document).ready(() => {
   articleView.populateFilters();
-  articleView.handleCategoryFilter();
-  articleView.handleAuthorFilter();
+  // articleView.handleCategoryFilter();
+  // articleView.handleAuthorFilter();
   articleView.handleMainNav();
   articleView.setTeasers();
 })

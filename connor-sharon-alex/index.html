@@ -36,6 +36,16 @@
 
   </script>
 
+  <script id="filter-template" type="text/x-handlebars-template">
+  
+    <li>
+        <select id="{{ type }}">
+          <option value="">-- Filter by {{ type }} --</option>
+        </select>
+    </li>
+
+  </script>
+
 </head>
 
 <body>
@@ -68,7 +78,7 @@
     <section id="articles" class="tab-content">
       <div>
         <ul id="filters">
-          <li>
+          <!-- <li>
             <select id="author-filter">
               <option value="">-- Filter by Authors --</option>
             </select>
@@ -77,7 +87,7 @@
             <select id="category-filter">
               <option value="">-- Filter by Categories --</option>
             </select>
-          </li>
+          </li> -->
         </ul>
       </div>
     </section>
@@ -102,6 +112,10 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <!-- TODO: Include Handlebars.JS from a CDN -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
+
+  <script src="scripts/filterData.js"></script>
+  <script src="scripts/filter.js"></script>
+  <script src="scripts/filterView.js"></script>
 
   <script src="scripts/blogArticles.js"></script>
   <script src="scripts/article.js"></script>

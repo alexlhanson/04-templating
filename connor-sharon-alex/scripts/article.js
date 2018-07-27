@@ -3,12 +3,6 @@
 let articles = [];
 
 function Article (rawDataObj) {
-  // this.author = rawDataObj.author;
-  // this.authorUrl = rawDataObj.authorUrl;
-  // this.title = rawDataObj.title;
-  // this.category = rawDataObj.category;
-  // this.body = rawDataObj.body;
-  // this.publishedOn = rawDataObj.publishedOn;
 
   // BONUS POINTS FOR US!
   for (let key in rawDataObj) {

@@ -23,33 +23,6 @@ articleView.populateFilters = () => {
   });
 };
 
-
-// articleView.handleAuthorFilter = () => {
-//   $('#author-filter').on('change', function() {
-//     if ($(this).val()) {
-//       $('article').hide();
-//       $(`article[data-author="${$(this).val()}"]`).fadeIn();
-//     } else {
-//       $('article').fadeIn();
-//       $('article.template').hide();
-//     }
-//     $('#category-filter').val('');
-//   });
-// };
-
-// articleView.handleCategoryFilter = () => {
-//   $('#category-filter').on('change', function() {
-//     if ($(this).val()) {
-//       $('article').hide();
-//       $(`article[data-category="${$(this).val()}"]`).fadeIn();
-//     } else {
-//       $('article').fadeIn();
-//       $('article.template').hide();
-//     }
-//     $('#author-filter').val('');
-//   });
-// };
-
 articleView.handleMainNav = () => {
   $('nav').on('click', '.tab', function (e) {
     e.preventDefault();
@@ -79,8 +52,6 @@ articleView.setTeasers = () => {
 
 $(document).ready(() => {
   articleView.populateFilters();
-  // articleView.handleCategoryFilter();
-  // articleView.handleAuthorFilter();
   articleView.handleMainNav();
   articleView.setTeasers();
 })
